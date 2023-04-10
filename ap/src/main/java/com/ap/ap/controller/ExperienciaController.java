@@ -1,23 +1,20 @@
 package com.ap.ap.controller;
 
 
+import antlr.StringUtils;
+import com.ap.ap.Dto.dtoExperiencia;
+import com.ap.ap.Security.Controller.Mensaje;
 import com.ap.ap.models.Experiencia;
 import com.ap.ap.services.ExperienciaService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
 @RequestMapping("/experiencia")
+
 public class ExperienciaController {
     private final ExperienciaService experienciaService;
 
@@ -29,12 +26,30 @@ public class ExperienciaController {
         List <Experiencia> experiencias = experienciaService.buscarExperiencia();
         return new ResponseEntity<>(experiencias, HttpStatus.OK);
     }
-    @PutMapping("/update")
-    public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia experiencia){
-        Experiencia updateExperiencia=experienciaService.editarExperiencia(experiencia);
-        return new ResponseEntity<>(experiencia, HttpStatus.OK);
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Experiencia> editarExperiencia(@PathVariable("id") Long id, @RequestBody dtoExperiencia dtoExpe) {
+        Experiencia experiencia = experienciaService.getOne(id).get();
+        experiencia.setTituloExp(dtoExpe.getTituloExp());
+        experiencia.setFechaExp(dtoExpe.getFechaExp());
+        experiencia.setDescExp(dtoExpe.getDescExp());
+        experiencia.setImgExp(dtoExpe.getImgExp());
+        experienciaService.editarExperiencia(experiencia);
+        return new ResponseEntity(new Mensaje("La experiencia se modificó correctamente"), HttpStatus.OK);
     }
-    
+
+        //@PutMapping("/update")
+    //public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia experiencia){
+        //Experiencia updateExperiencia=experienciaService.editarExperiencia(experiencia);
+        //return new ResponseEntity<>(experiencia, HttpStatus.OK);
+    //}
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Experiencia> getById(@PathVariable("id") Long id){
+        Experiencia experiencia = experienciaService.getOne(id).get();
+        return new ResponseEntity(experiencia, HttpStatus.OK);
+    }
+
+
     @PostMapping("/add")
     public ResponseEntity<Experiencia> crearExperiencia (@RequestBody Experiencia experiencia) {
         Experiencia nuevaExperiencia=experienciaService.addExperiencia(experiencia);

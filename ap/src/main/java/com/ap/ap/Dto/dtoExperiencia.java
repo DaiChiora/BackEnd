@@ -1,42 +1,31 @@
-package com.ap.ap.models;
+package com.ap.ap.Dto;
 
+import javax.validation.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-@Entity
-public class Experiencia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idExp;
+public class dtoExperiencia {
+    @NotBlank
     private String tituloExp;
+    @NotBlank
     private String fechaExp;
+    @NotBlank
     private String descExp;
+    @NotBlank
     private String imgExp;
 
+    //Constructores
 
-    public Experiencia() {
 
+    public dtoExperiencia() {
     }
 
-    public Experiencia(Long idExp, String tituloExp, String fechaExp, String descExp, String imgExp) {
-        this.idExp = idExp;
+    public dtoExperiencia(String tituloExp, String fechaExp, String descExp, String imgExp) {
         this.tituloExp = tituloExp;
         this.fechaExp = fechaExp;
         this.descExp = descExp;
         this.imgExp = imgExp;
     }
 
-    public Long getIdExp() {
-        return idExp;
-    }
-
-    public void setIdExp(Long idExp) {
-        this.idExp = idExp;
-    }
+    //Getters y Setters
 
     public String getTituloExp() {
         return tituloExp;
@@ -70,4 +59,3 @@ public class Experiencia {
         this.imgExp = imgExp;
     }
 }
-

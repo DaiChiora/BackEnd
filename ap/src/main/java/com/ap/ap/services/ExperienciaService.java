@@ -3,6 +3,8 @@ package com.ap.ap.services;
 import com.ap.ap.models.Experiencia;
 import com.ap.ap.repository.ExperienciaRepo;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,20 @@ public class ExperienciaService {
     public Experiencia editarExperiencia(Experiencia experiencia) {
        return experienciaRepo.save(experiencia);
     }
-    public void borrarExperiencia(Long id){
-       experienciaRepo.deleteById(id);
+    public void borrarExperiencia(Long idExp){
+       experienciaRepo.deleteById(idExp);
     }
+
+    public Optional<Experiencia> getOne (Long idExp){
+       return experienciaRepo.findById(idExp);
+    }
+    //public boolean existsById (Long id){
+      // return experienciaRepo.existsById(id);
+    //}
+    public Optional<Experiencia> getByTituloExp (String tituloExp) {
+       return experienciaRepo.findByTituloExp(tituloExp);
+    }
+    //public boolean existsByTituloExp (String tituloExp){
+      // return experienciaRepo.existByTituloExp(tituloExp);
+    //}
 }
