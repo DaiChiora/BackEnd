@@ -11,8 +11,8 @@ import javax.persistence.Id;
 @Entity
 public class Habilidades {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-    private Long idHabilidad;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int idHabilidad;
     private String nombreHabilidad;
     private int porcentaje;
 
@@ -20,18 +20,18 @@ public class Habilidades {
 
     }
 
-    public Habilidades(Long idHabilidad, String nombreHabilidad, int porcentaje) {
+    public Habilidades(int idHabilidad, String nombreHabilidad, int porcentaje) {
         this.idHabilidad = idHabilidad;
         this.nombreHabilidad = nombreHabilidad;
         this.porcentaje = porcentaje;
     }
 
-    public Long getIdHabilidad() {
+    public int getId() {
         return idHabilidad;
     }
 
-    public void setIdHabilidad(Long idHabilidad) {
-        this.idHabilidad = idHabilidad;
+    public void setId(int id) {
+        this.idHabilidad = id;
     }
 
     public String getNombreHabilidad() {
