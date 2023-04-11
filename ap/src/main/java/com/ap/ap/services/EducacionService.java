@@ -1,6 +1,7 @@
 package com.ap.ap.services;
 
 import com.ap.ap.models.Educacion;
+import com.ap.ap.models.Experiencia;
 import com.ap.ap.repository.EducacionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,13 @@ public class EducacionService {
     }
     public void borrarEducacion(Long id){
        educacionRepo.deleteById(id);
+    }
+    public Optional<Educacion> getOne (Long idEdu){
+        return educacionRepo.findById(idEdu);
+    }
+
+    public Optional<Educacion> getByTituloEdu (String tituloEdu) {
+        return educacionRepo.findByTituloEdu(tituloEdu);
     }
 
    
