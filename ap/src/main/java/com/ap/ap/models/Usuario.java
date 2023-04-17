@@ -32,6 +32,10 @@ public class Usuario {
     @NotNull
     @Size(min = 1, max = 40, message = "no cumple con la longitud")
     private String titulo;
+    @NotNull
+    private String img;
+    @NotNull
+    private String descripcion;
     
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "idEdu")
@@ -44,11 +48,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, String titulo, String img) {
+    public Usuario(Long id, String nombre, String apellido, String titulo, String img, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.img = img;
         
     }
 
@@ -84,6 +90,20 @@ public class Usuario {
         this.titulo = titulo;
     }
 
+    public String getImg() {
+        return img;
+    }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }
 

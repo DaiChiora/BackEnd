@@ -26,7 +26,7 @@ public class UsuarioService {
     public Usuario addUsuario(Usuario usuario) {
         return usuarioRepo.save(usuario);
     }
-    public List<Usuario> buscarUsuario(){
+    public List<Usuario> list(){
         return usuarioRepo.findAll();
     }
     public Usuario editarUsuario(Usuario usuario) {
