@@ -1,6 +1,9 @@
 package com.ap.ap.controller;
 
+import com.ap.ap.Dto.dtoEducacion;
+import com.ap.ap.Security.Controller.Mensaje;
 import com.ap.ap.models.Educacion;
+import com.ap.ap.models.Experiencia;
 import com.ap.ap.services.EducacionService;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -29,10 +32,22 @@ public class EducacionController {
         List <Educacion> educaciones = educacionService.buscarEducacion();
         return new ResponseEntity<>(educaciones, HttpStatus.OK);
     }
-    @PutMapping("/update")
-    public ResponseEntity<Educacion> editarEducacion(@RequestBody Educacion educacion){
-        Educacion updateEducacion=educacionService.editarEducacion(educacion);
-        return new ResponseEntity<>(educacion, HttpStatus.OK);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Educacion> editarEducacion(@PathVariable("id") Long id, @RequestBody dtoEducacion dtoEdu) {
+        Educacion educacion = educacionService.getOne(id).get();
+        educacion.setTituloEdu(dtoEdu.getTituloEdu());
+        educacion.setFechaEdu(dtoEdu.getFechaEdu());
+        educacion.setDescEdu(dtoEdu.getDescEdu());
+        educacion.setImgEdu(dtoEdu.getImgEdu());
+        educacionService.editarEducacion(educacion);
+        return new ResponseEntity(new Mensaje("La educación se modificó correctamente"), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Educacion> getById(@PathVariable("id") Long id){
+        Educacion educacion = educacionService.getOne(id).get();
+        return new ResponseEntity(educacion, HttpStatus.OK);
     }
     
     @PostMapping("/add")

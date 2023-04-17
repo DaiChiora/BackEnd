@@ -38,11 +38,7 @@ public class ExperienciaController {
         return new ResponseEntity(new Mensaje("La experiencia se modificó correctamente"), HttpStatus.OK);
     }
 
-        //@PutMapping("/update")
-    //public ResponseEntity<Experiencia> editarExperiencia(@RequestBody Experiencia experiencia){
-        //Experiencia updateExperiencia=experienciaService.editarExperiencia(experiencia);
-        //return new ResponseEntity<>(experiencia, HttpStatus.OK);
-    //}
+
     @GetMapping("/detail/{id}")
     public ResponseEntity<Experiencia> getById(@PathVariable("id") Long id){
         Experiencia experiencia = experienciaService.getOne(id).get();

@@ -36,13 +36,9 @@ public class ExperienciaService {
     public Optional<Experiencia> getOne (Long idExp){
        return experienciaRepo.findById(idExp);
     }
-    //public boolean existsById (Long id){
-      // return experienciaRepo.existsById(id);
-    //}
+
     public Optional<Experiencia> getByTituloExp (String tituloExp) {
        return experienciaRepo.findByTituloExp(tituloExp);
     }
-    //public boolean existsByTituloExp (String tituloExp){
-      // return experienciaRepo.existByTituloExp(tituloExp);
-    //}
+
 }
