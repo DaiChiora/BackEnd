@@ -8,6 +8,7 @@ import com.ap.ap.models.Habilidades;
 import com.ap.ap.services.ExperienciaService;
 import com.ap.ap.services.HabilidadesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequestMapping("/habilidades")
 public class HabilidadesController {
     @Autowired
+    @Lazy
     HabilidadesService habilidadesService;
 
     @GetMapping("/lista")

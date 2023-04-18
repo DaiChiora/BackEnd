@@ -7,6 +7,9 @@ import com.ap.ap.Security.Controller.Mensaje;
 import com.ap.ap.models.Experiencia;
 import com.ap.ap.services.ExperienciaService;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +17,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/experiencia")
+@CrossOrigin(origins ="*")
 
 public class ExperienciaController {
+    @Autowired
+    @Lazy
     private final ExperienciaService experienciaService;
 
     public ExperienciaController(ExperienciaService experienciaService) {

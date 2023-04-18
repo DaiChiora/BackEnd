@@ -3,6 +3,7 @@ package com.ap.ap.services;
 import com.ap.ap.models.Habilidades;
 import com.ap.ap.repository.HabilidadesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @Service
 public class HabilidadesService {
     @Autowired
+    @Lazy
     HabilidadesRepo habilidadesRepo;
 
     public List<Habilidades> list(){

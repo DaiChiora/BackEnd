@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,14 +35,19 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class AuthController {
     @Autowired
+    @Lazy
     PasswordEncoder passwordEncoder;
     @Autowired
+    @Lazy
     AuthenticationManager authenticationManager;
     @Autowired
+    @Lazy
     UsuarioServiceSecurity usuarioServiceSecurity;
     @Autowired
+    @Lazy
     RolService rolService;
     @Autowired
+    @Lazy
     JwtProvider jwtProvider;
     
     
