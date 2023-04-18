@@ -21,9 +21,7 @@ public class HabilidadesService {
     public Optional<Habilidades> getOne(int id){
         return habilidadesRepo.findById(id);
     }
-    public Optional<Habilidades> getByNombreHabilidad(String nombreHabilidad){
-        return habilidadesRepo.findByNombreHabilidad(nombreHabilidad);
-    }
+
     public Habilidades save(Habilidades habilidades) {
         habilidadesRepo.save(habilidades);
         return habilidades;
