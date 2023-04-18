@@ -15,7 +15,9 @@
     <description>ap backend</description>
     <properties>
         <java.version>17</java.version>
-    </properties>
+    <start-class>com.baeldung.demo.DemoApplication</start-class>
+</properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,14 +102,7 @@
                 </configuration>
             </plugin>
 
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                        <mainClass>com.baeldung.demo.DemoApplication</mainClass>
-                        <layout>JAR</layout>
-                    </configuration>
-                </plugin>
+
 
         </plugins>
             
