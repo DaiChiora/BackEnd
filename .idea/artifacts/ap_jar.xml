@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="ap:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ap_jar</output-path>
+    <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="ap.jar">
       <element id="module-output" name="ap" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-tomcat/2.6.7/spring-boot-starter-tomcat-2.6.7.jar" path-in-jar="/" />
