@@ -15,7 +15,7 @@
     <description>ap backend</description>
     <properties>
         <java.version>17</java.version>
-    <start-class>com.baeldung.demo.DemoApplication</start-class>
+    <start-class>com.ap.ap.ApApplication.MainClass</start-class>
 </properties>
 
     <dependencies>
@@ -92,6 +92,21 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>${start-class}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
