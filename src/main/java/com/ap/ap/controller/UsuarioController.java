@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "https://portfolio-daichiora-front.web.app")
+@CrossOrigin(origins = "**")
 public class UsuarioController {
     @Autowired
     @Lazy

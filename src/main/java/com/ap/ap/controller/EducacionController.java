@@ -2,24 +2,22 @@ package com.ap.ap.controller;
 
 
 import com.ap.ap.Dto.dtoEducacion;
-import com.ap.ap.Dto.dtoExperiencia;
 import com.ap.ap.Security.Controller.Mensaje;
 import com.ap.ap.models.Educacion;
-import com.ap.ap.models.Experiencia;
 import com.ap.ap.services.EducacionService;
-import com.ap.ap.services.ExperienciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin (origins ="https://portfolio-daichiora-front.web.app")
+@CrossOrigin(origins ="**")
 
 public class EducacionController {
     @Autowired
