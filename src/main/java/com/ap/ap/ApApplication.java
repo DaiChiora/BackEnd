@@ -26,8 +26,9 @@ public class ApApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "PUT","DELETE");
+                        .allowedOrigins("/https://portfolio-daichiora-front.web.app")
+                        .allowedMethods("*")
+                        .allowedHeaders("*");
             }
         };
     }
