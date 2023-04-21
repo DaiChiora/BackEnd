@@ -1,6 +1,6 @@
 package com.ap.ap;
 
-
+import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +10,6 @@ import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Arrays;
-
-
 @SpringBootApplication
 public class ApApplication {
 
@@ -21,21 +18,21 @@ public class ApApplication {
     }
 
     @Bean
-    public WebMvcConfigurer CORSConfigurer(){
+    public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
+
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("/https://portfolio-daichiora-front.web.app")
-                        .allowedMethods("*")
-                        .allowedHeaders("*");
+
+                registry.addMapping("/**").allowedOrigins("*");
             }
         };
     }
 
+    @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowCredentials(false);
         corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
 
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
@@ -50,7 +47,6 @@ public class ApApplication {
     }
 
 }
-
 
 
 
