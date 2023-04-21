@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin (origins ="*")
+@CrossOrigin (origins ="https://portfolio-daichiora-front.web.app")
 
 public class EducacionController {
     @Autowired
