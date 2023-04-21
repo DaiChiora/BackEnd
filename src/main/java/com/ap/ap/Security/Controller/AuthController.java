@@ -30,24 +30,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "https://portfolio-daichiora-front.web.app/")
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins ="**")
+
 public class AuthController {
     @Autowired
-    @Lazy
     PasswordEncoder passwordEncoder;
     @Autowired
-    @Lazy
     AuthenticationManager authenticationManager;
     @Autowired
-    @Lazy
     UsuarioServiceSecurity usuarioServiceSecurity;
     @Autowired
-    @Lazy
     RolService rolService;
     @Autowired
-    @Lazy
     JwtProvider jwtProvider;
     
     
