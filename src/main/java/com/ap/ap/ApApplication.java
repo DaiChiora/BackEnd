@@ -35,7 +35,7 @@ public class ApApplication {
 
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(false);
+        corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
 
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",

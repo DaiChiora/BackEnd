@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usuario")
 public class UsuarioController {
     @Autowired
-    @Lazy
+
     UsuarioService usuarioService;
 
 

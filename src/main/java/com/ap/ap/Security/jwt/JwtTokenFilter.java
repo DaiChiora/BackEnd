@@ -20,10 +20,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
     @Autowired
-    @Lazy
     JwtProvider jwtProvider;
     @Autowired
-    @Lazy
     UserDetailsImpl userDetailsServiceImpl;
 
     @Override

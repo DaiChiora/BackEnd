@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/habilidades")
 public class HabilidadesController {
     @Autowired
-    @Lazy
+
     HabilidadesService habilidadesService;
 
     @GetMapping("/lista")

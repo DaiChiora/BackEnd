@@ -24,11 +24,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity (prePostEnabled = true)
 public class MainSecurity {
     @Autowired
-    @Lazy
+
     UserDetailsImpl userDetailsServiceImpl;
 
     @Autowired
-    @Lazy
+
     JwtEntryPoint jwtEntryPoint;
 
     @Bean
@@ -45,6 +45,19 @@ public class MainSecurity {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
+    }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .authorizeHttpRequests()
+                .antMatchers("/**").permitAll()
+                .anyRequest().authenticated();
+
+        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
     }
 
 

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class EducacionController {
     @Autowired
-    @Lazy
+
     private final EducacionService educacionService;
 
     public EducacionController(EducacionService educacionService) {

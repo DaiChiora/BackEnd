@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/experiencia")
 public class ExperienciaController {
     @Autowired
-    @Lazy
+
     private final ExperienciaService experienciaService;
 
     public ExperienciaController(ExperienciaService experienciaService) {
