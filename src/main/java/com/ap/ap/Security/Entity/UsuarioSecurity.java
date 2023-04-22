@@ -27,17 +27,17 @@ public class UsuarioSecurity {
     @NotNull
     @Column(unique = true)
     private String nombreUsuario;
-     @NotNull
+    @NotNull
     private String email;
-      @NotNull
+    @NotNull
     private String password;
-      @ManyToMany(fetch = FetchType.EAGER)
-      @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
-      private Set<Rol> roles = new HashSet <>();
-      
-      //Constructores
-      
-      
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet <>();
+
+    //Constructores
+
+
     public UsuarioSecurity() {
     }
 
@@ -47,8 +47,8 @@ public class UsuarioSecurity {
         this.email = email;
         this.password = password;
     }
-    
-     //Getters y Setters
+
+    //Getters y Setters
 
     public int getId() {
         return id;
@@ -97,7 +97,7 @@ public class UsuarioSecurity {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
-    
-    
-      
+
+
+
 }

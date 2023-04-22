@@ -17,8 +17,8 @@ public class NuevoUsuario {
     private String email;
     private String password;
     private Set<String> roles = new HashSet <>();
-    
-    
+
+
     //Getters y Setters
 
     public String getNombre() {
@@ -60,5 +60,5 @@ public class NuevoUsuario {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-    
+
 }

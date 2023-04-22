@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,46 +44,46 @@ public class AuthController {
     RolService rolService;
     @Autowired
     JwtProvider jwtProvider;
-    
-    
+
+
     @PostMapping ("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if (bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje ("Campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
-        
-     
-         
-         UsuarioSecurity usuarioSecurity = new UsuarioSecurity(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
-         nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
-         
-         Set<Rol> roles = new HashSet <>();
-         roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
-         
-         if (nuevoUsuario.getRoles().contains("admin"))
-             roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
-         usuarioSecurity.setRoles(roles);
-         usuarioServiceSecurity.save(usuarioSecurity);
-         
-         return new ResponseEntity(new Mensaje ("Usuario guardado"), HttpStatus.CREATED);
-         
+
+
+
+        UsuarioSecurity usuarioSecurity = new UsuarioSecurity(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
+                nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
+
+        Set<Rol> roles = new HashSet <>();
+        roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
+
+        if (nuevoUsuario.getRoles().contains("admin"))
+            roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+        usuarioSecurity.setRoles(roles);
+        usuarioServiceSecurity.save(usuarioSecurity);
+
+        return new ResponseEntity(new Mensaje ("Usuario guardado"), HttpStatus.CREATED);
+
     }
-    
+
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje ("Campos mal puestos"), HttpStatus.BAD_REQUEST);
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-        loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
-        
+                loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        
+
         String jwt = jwtProvider.generateToken(authentication);
-        
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        
+
         JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
-        
+
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
-    
+
 }
