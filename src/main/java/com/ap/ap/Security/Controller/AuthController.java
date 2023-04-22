@@ -56,12 +56,12 @@ public class AuthController {
         UsuarioSecurity usuarioSecurity = new UsuarioSecurity(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
                 nuevoUsuario.getEmail(), passwordEncoder.encode(nuevoUsuario.getPassword()));
 
-        Set<Rol> roles = new HashSet <>();
-        roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
+        //Set<Rol> roles = new HashSet ();
+        //roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
 
-        if (nuevoUsuario.getRoles().contains("admin"))
-            roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
-        usuarioSecurity.setRoles(roles);
+        //if (nuevoUsuario.getRoles().contains("admin"))
+            //roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+        //usuarioSecurity.setRoles(roles);
         usuarioServiceSecurity.save(usuarioSecurity);
 
         return new ResponseEntity(new Mensaje ("Usuario guardado"), HttpStatus.CREATED);
