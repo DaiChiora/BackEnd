@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 public class HabilidadesService {
     @Autowired
-    @Lazy
+
     HabilidadesRepo habilidadesRepo;
 
     public List<Habilidades> list(){
